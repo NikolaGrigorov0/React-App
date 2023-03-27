@@ -1,5 +1,5 @@
 import NavigationBar from "./components/Navbar/NavigationBar";
-import { Route, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 
 function App() {
@@ -8,9 +8,12 @@ function App() {
       <NavigationBar/>
 
       <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+              <Route path='/' //element={<Home />} 
+              />
+              <Route path='/login' //element={<Login />} 
+              />
+              <Route path='/register' //element={<Register />} 
+              />
       </Routes>
     </div>
   );
