@@ -1,21 +1,22 @@
-import NavigationBar from "./components/Navbar/NavigationBar";
+import { Layout } from "./components/Layout/Layout";
 import { Route, Routes } from "react-router-dom";
+import { Home } from "./components/Home/Home";
+
 
 
 function App() {
   return (
-    <div className="App">
-      <NavigationBar/>
+    <main id="main-content">
+      <Layout />
 
       <Routes>
-              <Route path='/' //element={<Home />} 
-              />
+              <Route path='/' element={<Home />} />
               <Route path='/login' //element={<Login />} 
               />
               <Route path='/register' //element={<Register />} 
               />
       </Routes>
-    </div>
+    </main>
   );
 }
 
