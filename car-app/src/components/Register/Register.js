@@ -1,11 +1,11 @@
-import { authContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/authContext';
 import { useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
 
 import './Register.css';
 
 export const Register = () => {
-    const { onRegisterSubmit } = useContext(authContext);
+    const { onRegisterSubmit } = useContext(AuthContext);
     const {values, changeHandler, onSubmit } = useForm({
         username: '',
         email: '',

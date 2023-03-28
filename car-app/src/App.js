@@ -1,4 +1,5 @@
-import { authContext } from "./contexts/authContext";
+import { AuthContext } from "./contexts/authContext";
+import * as authService from './services/authService';
 
 import { Layout } from "./components/Layout/Layout";
 import { Route, Routes } from "react-router-dom";
@@ -8,8 +9,14 @@ import { Register } from "./components/Register/Register";
 
 
 function App() {
+
+  const onRegisterSubmit = async (data) => {
+    await authService.register(data);
+    console.log(data);
+  }
+
   return (
-    <authContext.Provider value={onRegisterSubmit}>
+    <AuthContext.Provider value={{onRegisterSubmit}}>
 
       <Layout />
     <main id="main-content">
@@ -22,7 +29,7 @@ function App() {
       </Routes>
     </main>
 
-</authContext.Provider>
+</AuthContext.Provider>
   );
 }
 
