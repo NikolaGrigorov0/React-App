@@ -1,0 +1,70 @@
+.car-collection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  /* Style for each car item */
+  .car-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #975703;
+    max-width: 300px;
+    min-width: 200px;
+    opacity: 0.9;
+  }
+  
+  /* Style for car image */
+  .car-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for car name */
+  .car-model {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Style for car brand */
+  .create-year {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Style for car description */
+  .car-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Style for change image button */
+  .details-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  /* Style for change image button on hover */
+  .details-btn:hover {
+    background-color: #555;
+    color: #fff;
+  }

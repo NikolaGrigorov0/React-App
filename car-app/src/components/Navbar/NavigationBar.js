@@ -14,8 +14,7 @@ function NavigationBar() {
           <Nav className="me-auto">
             {isAuthenticated && (
               <div id="users">
-              <Nav.Link href="/collection">Collection</Nav.Link>
-              <Nav.Link href="/addItems">Add Item</Nav.Link>
+              <Nav.Link href="/addItem">Add Item</Nav.Link>
               <Nav.Link href="/logout">logout</Nav.Link>
               </div>
             )}
@@ -25,6 +24,7 @@ function NavigationBar() {
               <Nav.Link href="/register">Register</Nav.Link>
               </div>
             )}
+            <Nav.Link href="/collection">Collection</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

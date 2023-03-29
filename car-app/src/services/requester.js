@@ -1,8 +1,12 @@
-export const request = async (method, url) => {
+export const request = async (method, url, data) => {
 
-    const response = await fetch(url, {
-      method,
-    });
+    const options = {};
+    options.method = method;
+
+    if (method !== 'GET') {
+        options.body = JSON.stringify(data);
+    }
+    const response = await fetch(url, options);
 
     try {
         if(!response.ok){
