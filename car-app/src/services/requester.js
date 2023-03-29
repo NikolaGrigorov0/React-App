@@ -1,19 +1,23 @@
-
 export const request = async (method, url) => {
 
-    const responce = fetch(url, {
-        method,
+    const response = await fetch(url, {
+      method,
     });
+
     try {
-        const result = await responce.json();
+        if(!response.ok){
+            throw new Error('Request is not ok!');
+        }
+      const result = await response.json();
+      return result;
 
-        return result; 
-    } catch(error) {
-        return {}
+    } catch (error) {
+      throw new Error(`Request failed: ${error}`);
     }
-}
 
-export const get = request.bind(null, 'GET');
-export const post = request.bind(null, 'POST');
-export const put = request.bind(null, 'PUT');
-export const del = request.bind(null, 'DELETE');
+  };
+  
+  export const get = request.bind(null, 'GET');
+  export const post = request.bind(null, 'POST');
+  export const put = request.bind(null, 'PUT');
+  export const del = request.bind(null, 'DELETE');

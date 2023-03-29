@@ -1,5 +1,7 @@
 import * as request from "./requester";
 
-const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'http://localhost:3030/jsonstore'
 
 export const register = async (data) => request.post(`${baseUrl}/users/register`, data);
+
+export const login = async (data) => request.post(`${baseUrl}/users/login`, data);
