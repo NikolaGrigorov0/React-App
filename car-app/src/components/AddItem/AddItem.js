@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { useForm } from '../../hooks/useForm';
+
 import './AddItem.css';
 
 export const AddItem = () => {
-    const { onCreateSubmit } = useState(AuthContext);
+    const { onCreateSubmit } = useContext(AuthContext);
     const { values, changeHandler, onSubmit } = useForm({
         carModel: '',
         year: '',
         imageUrl: '',
-        desctiption: '',
+        description : '',
     }, onCreateSubmit); 
 
     return(
@@ -29,8 +30,8 @@ export const AddItem = () => {
             <input type="text" id="imageUrl" name="imageUrl" value={values.imageUrl} onChange={changeHandler}/>
           </div>
           <div className="input-field">
-            <label htmlFor="description">Description</label>
-            <textarea id="description" name="description" value={values.description} onChange={changeHandler}></textarea>
+            <label htmlFor="description ">Description</label>
+            <textarea id="description " name="description" value={values.description } onChange={changeHandler}></textarea>
           </div>
           <div className="btn-container">
             <button type="submit">Create</button>

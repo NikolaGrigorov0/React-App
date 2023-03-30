@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/authContext';
 
 function NavigationBar() {
   const { isAuthenticated }  = useContext(AuthContext);
+  const { onLogout } = useContext(AuthContext);
   return (
 
       <Navbar bg="dark" variant="dark">
@@ -15,7 +16,7 @@ function NavigationBar() {
             {isAuthenticated && (
               <div id="users">
               <Nav.Link href="/addItem">Add Item</Nav.Link>
-              <Nav.Link href="/logout">logout</Nav.Link>
+              <Nav.Link href="/logout" onClick={onLogout}>logout</Nav.Link>
               </div>
             )}
             {!isAuthenticated && (
