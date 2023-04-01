@@ -66,3 +66,8 @@
     background-color: #555;
     color: #fff;
   }
+
+  .catalog-page__no-cars {
+    text-align: center;
+    margin: 50px 0;
+  }

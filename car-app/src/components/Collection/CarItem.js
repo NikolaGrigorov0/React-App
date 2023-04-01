@@ -13,7 +13,6 @@ export const CarItem = ( {
 } ) => 
 
 {
-    console.log("log from car item", carModel);
     const { isAuthenticated } = useContext(AuthContext);
     return(
         <div className="car-item">
@@ -21,7 +20,7 @@ export const CarItem = ( {
         <div className="car-model">{carModel}</div>
         <div className="create-year">{year}</div>
         <div className="car-description">{description}</div>
-        {isAuthenticated && (<Link to='/details' className="details-btn"> Details </Link>)}
+        {isAuthenticated && (<Link to={`/details/${_id}`} className="details-btn"> Details </Link>)}
       </div>
     );
 }

@@ -10,6 +10,8 @@ import { Login } from "./components/Login/Login";
 import { useEffect, useState } from "react";
 import { Collection } from "./components/Collection/Collection";
 import { AddItem } from "./components/AddItem/AddItem";
+import { Details } from "./components/Details/Details";
+import { Edit } from "./components/Edit/Edit";
 
 
 
@@ -17,6 +19,7 @@ function App() {
 
     const [auth, setAuth] = useState({});
     const [cars, setCars] = useState([]);
+    let [reloadIndicator, setIndicator] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,13 +30,22 @@ function App() {
             });
     }, []);
 
+    const onEditSubmit = async (data) => {
+        try{
+            await carService.editItem(data, data._id);
+            setIndicator(true);
+            navigate('/collection');
+        }catch(err){
+            throw new Error(err);
+        }
+    };
 
     const onCreateSubmit = async (data) => {
         try{
 
-            const result = await carService.createItem(data);
-
-            console.log(result);
+            await carService.createItem(data);
+            setIndicator(true);
+            navigate('/collection');
 
         }catch(err){
             throw new Error(err);
@@ -59,7 +71,6 @@ function App() {
         } catch (err) {
             throw new Error(err);
         }
-
         navigate('/collection');
     }
 
@@ -73,7 +84,6 @@ function App() {
         } catch (err) {
             throw new Error(err);
         }
-
         navigate('/collection');
     }
 
@@ -82,6 +92,9 @@ function App() {
         onRegisterSubmit,
         onCreateSubmit,
         onLogout,
+        onEditSubmit,
+        cars:cars,
+        reloadIndicator,
         isAuthenticated: !!localStorage.getItem('authToken'),
         userId: auth._id,
         token: localStorage.getItem('authToken'),
@@ -97,8 +110,10 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/collection' element={<Collection cars={ cars }/>} />
+                    <Route path='/collection' element={<Collection/>} />
                     <Route path='/addItem' element={<AddItem />} />
+                    <Route path='/details/:id' element={<Details />} />
+                    <Route path='details/:id/edit' element={<Edit />} />
                 </Routes>
             </main>
 
