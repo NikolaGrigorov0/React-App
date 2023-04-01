@@ -1,7 +1,9 @@
 import * as carService from '../../services/carService';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import './Details.css';
 import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
+import './Details.css';
 
 export const Details = () => {
     const navigate = useNavigate();
