@@ -12,6 +12,8 @@ import { Collection } from "./components/Collection/Collection";
 import { AddItem } from "./components/AddItem/AddItem";
 import { Details } from "./components/Details/Details";
 import { Edit } from "./components/Edit/Edit";
+import { ErrorHandler } from "./components/ErrorHandler/ErrorHandler";
+import { registerValidation } from "./validation/registerValitation";
 
 
 
@@ -19,6 +21,7 @@ function App() {
 
     const [cars, setCars] = useState([]);
     const navigate = useNavigate();
+    const [error,setError] = useState('');
 
     useEffect(() => {
         carService.getAll()
@@ -27,6 +30,12 @@ function App() {
                 setCars(result)
             });
     }, []);
+
+    useEffect(() => {
+        if (error) {
+            return <ErrorHandler error={error} />
+        }
+    }, [error]);
 
     const onEditSubmit = async (data) => {
         try{
@@ -59,6 +68,12 @@ function App() {
     }
 
     const onRegisterSubmit = async (data) => {
+        const error = registerValidation(data.email, data.password, data.confirmPassword);
+        if(error !== ''){
+            setError(error)
+            console.log(error);
+        };
+
         const { confirmPassword, ...registerData } = data;
         if (confirmPassword !== registerData.password) {
             return;
@@ -107,6 +122,7 @@ function App() {
 
             <Layout />
             <main id="main-content">
+                {error && <ErrorHandler error={error} />}
 
                 <Routes>
                     <Route path='/' element={<Home />} />
