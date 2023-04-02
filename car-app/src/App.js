@@ -17,9 +17,7 @@ import { Edit } from "./components/Edit/Edit";
 
 function App() {
 
-    const [auth, setAuth] = useState({});
     const [cars, setCars] = useState([]);
-    let [reloadIndicator, setIndicator] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,8 +31,8 @@ function App() {
     const onEditSubmit = async (data) => {
         try{
             await carService.editItem(data, data._id);
-            setIndicator(true);
             navigate('/collection');
+            window.location.reload();
         }catch(err){
             throw new Error(err);
         }
@@ -44,8 +42,8 @@ function App() {
         try{
 
             await carService.createItem(data);
-            setIndicator(true);
             navigate('/collection');
+            window.location.reload();
 
         }catch(err){
             throw new Error(err);
@@ -61,11 +59,15 @@ function App() {
     }
 
     const onRegisterSubmit = async (data) => {
-        try {
+        const { confirmPassword, ...registerData } = data;
+        if (confirmPassword !== registerData.password) {
+            return;
+        }
 
+        try {
             const result = await authService.register(data);
             localStorage.setItem('authToken', result.accessToken);
-            setAuth(result);
+            localStorage.setItem('userId', result._id);
 
             
         } catch (err) {
@@ -79,12 +81,13 @@ function App() {
 
             const result = await authService.login(data);
             localStorage.setItem('authToken', result.accessToken);
-            setAuth(result);
+            localStorage.setItem('userId', result._id);
+            
+            navigate('/collection');
 
         } catch (err) {
             throw new Error(err);
         }
-        navigate('/collection');
     }
 
     const contexts = {
@@ -94,9 +97,8 @@ function App() {
         onLogout,
         onEditSubmit,
         cars:cars,
-        reloadIndicator,
         isAuthenticated: !!localStorage.getItem('authToken'),
-        userId: auth._id,
+        userId: localStorage.getItem('userId'),
         token: localStorage.getItem('authToken'),
     }
 
