@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Collection } from "./components/Collection/Collection";
 import { AddItem } from "./components/AddItem/AddItem";
 import { Details } from "./components/Details/Details";
-import { Edit } from "./components/Ednit/Edit";
+import { Edit } from "./components/Edit/Edit";
 
 
 
