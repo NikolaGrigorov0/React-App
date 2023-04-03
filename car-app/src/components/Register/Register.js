@@ -13,12 +13,11 @@ export const Register = () => {
     }, onRegisterSubmit)
 
     return(
-        <form id="register" onSubmit={onSubmit}>
+        <form id="register" onSubmit={onSubmit} noValidate>
       <h2>Register</h2>
-      {/*
+      
         <label htmlFor="username">Username:</label>
       <input type="text" id="username" name="username" value={values.username} onChange={changeHandler} required /> 
-    */}
       <label htmlFor="email">Email:</label>
       <input type="email" id="email" name="email" value={values.email} onChange={changeHandler} required />
       <label htmlFor="password">Password:</label>

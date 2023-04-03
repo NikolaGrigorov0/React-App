@@ -10,8 +10,6 @@ export const Details = () => {
     const { userId } = useContext(AuthContext); 
     const [carData, setCarData] = useState({});
     const isOwner = userId === carData._ownerId;
-    console.log("userId", userId);
-    console.log("carDataId", carData._ownerId);
 
     const onDelete = async (currentId) => {
         await carService.deleteItem(currentId);
@@ -20,9 +18,6 @@ export const Details = () => {
         navigate('/collection');
         window.location.reload();
     }
-    
-    
-    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,4 +36,5 @@ export const Details = () => {
           { isOwner && <button className="car-details__button car-details__delete-button" onClick={() => onDelete(id)}>Delete</button>}
         </div>
     );
+    
 }

@@ -1,9 +1,12 @@
+
 import './ErrorHandler.css';
 
-export const ErrorHandler = (error) => {
-    const { errorMessege } = error;
-    error = '';
+export const ErrorHandler = ({ error }) => {
+
     return(
-        <div className="validation-error">{errorMessege}</div>
+        <div className="validation-error">
+            <div className="error-message">{error}</div>
+        </div>
     );
+    
 }

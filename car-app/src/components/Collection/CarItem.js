@@ -10,9 +10,7 @@ export const CarItem = ( {
     imageUrl,
     description,
 
-} ) => 
-
-{
+}) => {
     const { isAuthenticated } = useContext(AuthContext);
     return(
         <div className="car-item">
@@ -21,6 +19,7 @@ export const CarItem = ( {
         <div className="create-year">{year}</div>
         <div className="car-description">{description}</div>
         {isAuthenticated && (<Link to={`/details/${_id}`} className="details-btn"> Details </Link>)}
+        {/* <div className="creater">{creater}</div> */}
       </div>
     );
 }
