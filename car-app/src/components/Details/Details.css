@@ -40,8 +40,51 @@
   
   .car-details__edit-button {
     background-color: #28a745;
+    margin-left: 24%;
   }
   
   .car-details__delete-button {
     background-color: #dc3545;
+  }
+
+
+  .heart-button button {
+    display: inline-flex;
+    align-items: center;
+    border: black 2px;
+    background: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 100px;
+    margin-right: 100%;
+  }
+  
+  .heart-icon {
+    margin-right: 5px;
+    color: #ffffff;
+  }
+  
+  .heart-button button:hover .heart-icon {
+    color: #c82333;
+  }
+  
+  .heart-button button:focus {
+    outline: none;
+  }
+  .heart-button button:active {
+    color: #c82333;
+  }
+  
+  .text {
+    margin-left: 5px;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    
+  }
+  .count {
+    display: flex;
+    margin-top: 100%;
+    margin-right: 10px;
   }
