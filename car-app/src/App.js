@@ -16,6 +16,7 @@ import { ErrorHandler } from "./components/ErrorHandler/ErrorHandler";
 import { registerValidation } from "./validation/registerValitation";
 import { loginValidation } from "./validation/loginValidation";
 import { addItemValidation } from "./validation/addItemValidation";
+import { NotFoundPage } from "./components/NotFoundPage/NotFoundPage";
 
 
 
@@ -139,7 +140,7 @@ function App() {
 
     return (
         <AuthContext.Provider value={contexts}>
-
+            
             <Layout />
             <main id="main-content">
                 {error !== '' && <ErrorHandler error={error} />}
@@ -149,9 +150,10 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/collection' element={<Collection />} />
-                    <Route path='/addItem' element={<AddItem />} />
-                    <Route path='/details/:id' element={<Details />} />
-                    <Route path='details/:id/edit' element={<Edit />} />
+                    <Route path='/addItem' element={localStorage.getItem('authToken') && <AddItem />}/>
+                    <Route path='/details/:id' element={localStorage.getItem('authToken') && <Details />} />
+                    <Route path='details/:id/edit' element={localStorage.getItem('authToken') && <Edit />} />
+                    <Route path='/*' element={<NotFoundPage />} />
                 </Routes>
             </main>
 
