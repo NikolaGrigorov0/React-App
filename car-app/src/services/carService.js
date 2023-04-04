@@ -4,12 +4,25 @@ const baseUrl = 'http://localhost:3030/data/cars'
 
 export const createItem = async (data) => {
     try {
-        request.post(baseUrl, data, localStorage.getItem('authToken'));
+        request.post(baseUrl, {
+            ...data,
+            likes: {
+              count: 0,
+              users: []
+            }
+          }, localStorage.getItem('authToken'));
     } catch (err){
         throw new Error(err);
     }
 }
 
+export const updateLikes = async (data, id) => {
+    try{
+        await request.put(baseUrl + "/" + id, data, localStorage.getItem('authToken'));
+    } catch(err) {
+        throw new Error(err.messege);
+    } 
+}
 
 export const editItem = async (data, id) => {
     try{

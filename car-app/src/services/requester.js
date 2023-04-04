@@ -12,6 +12,11 @@ export const request = async (method, url, data, token) => {
       'X-Authorization': token,
     };
   }
+  if(method === 'GET'){
+    options.headers = {
+      ...options.headers, 'Content-Type': 'application/json'
+    }
+  }
 
   const response = await fetch(url, options);
 

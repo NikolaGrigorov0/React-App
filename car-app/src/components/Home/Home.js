@@ -9,10 +9,6 @@ export const Home = () => {
         <h1>Welcome to the car storage</h1>
         <p>this is an aplication made for creating your own album with cars and beeing creative maybe.</p>
     </div>
-    
-        <footer>
-          <p>&copy; 2023 Cars Catalog</p>
-        </footer>
       </div>
       
     );
