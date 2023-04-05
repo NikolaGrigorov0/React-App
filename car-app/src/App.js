@@ -150,7 +150,7 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/collection' element={<Collection />} />
-                    <Route path='/addItem' element={localStorage.getItem('authToken') && <AddItem />}/>
+                    <Route path='/addItem' element={localStorage.getItem('authToken') && <AddItem /> }/>
                     <Route path='/details/:id' element={localStorage.getItem('authToken') && <Details />} />
                     <Route path='details/:id/edit' element={localStorage.getItem('authToken') && <Edit />} />
                     <Route path='/*' element={<NotFoundPage />} />
