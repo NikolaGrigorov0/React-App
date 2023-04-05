@@ -19,7 +19,7 @@ function NavigationBar() {
               <div id="users" style={{display: 'flex'}}>
               <Nav.Link href="/addItem">Add Item</Nav.Link>
               <Nav.Link href="/collection">Collection</Nav.Link>
-              <Nav.Link href="/logout" onClick={onLogout}>logout</Nav.Link>
+              <Nav.Link href="/logout" onClick={onLogout}>Logout</Nav.Link>
               </div>
             )}
             {!isAuthenticated && (

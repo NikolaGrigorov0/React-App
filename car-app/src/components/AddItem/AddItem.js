@@ -3,9 +3,11 @@ import { AuthContext } from '../../contexts/authContext';
 import { useForm } from '../../hooks/useForm';
 
 import './AddItem.css';
+import { useNavigate } from 'react-router-dom';
 
 export const AddItem = () => {
     const { onCreateSubmit } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { values, changeHandler, onSubmit } = useForm({
         carModel: '',
@@ -13,6 +15,12 @@ export const AddItem = () => {
         imageUrl: '',
         description : '',
     }, onCreateSubmit); 
+
+    useEffect(() => {
+      if(!localStorage.getItem('authToken')){
+          navigate('/failed');
+      }
+  }, []);
 
     return(
         <div className="container">

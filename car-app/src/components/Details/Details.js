@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 
+
 import './Details.css';
 
 export const Details = () => {
@@ -50,6 +51,12 @@ export const Details = () => {
         };
         fetchData();
     }, [id]);
+
+    useEffect(() => {
+        if(!localStorage.getItem('authToken')){
+            navigate('/failed');
+        }
+    }, [])
 
     return (
         <div className="car-details">

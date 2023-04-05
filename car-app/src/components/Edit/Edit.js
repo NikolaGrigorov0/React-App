@@ -1,5 +1,5 @@
 import { useContext, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/authContext';
 import { useForm } from '../../hooks/useForm';
 import * as carService from '../../services/carService';
@@ -9,6 +9,7 @@ import './Edit.css';
 export const Edit = () => {
     const { onEditSubmit } = useContext(AuthContext);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const { values, changeHandler, onSubmit, changeValue } = useForm({
         carModel: '',
@@ -24,6 +25,12 @@ export const Edit = () => {
         };
         fetchData();
     }, [id]);
+
+    useEffect(() => {
+      if(!localStorage.getItem('authToken')){
+          navigate('/failed');
+      }
+  }, []);
     
     return(
         <div className="container">
