@@ -26,6 +26,7 @@ function App() {
     const [cars, setCars] = useState([]);
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         carService.getAll()
@@ -93,9 +94,10 @@ function App() {
             if (confirmPassword !== registerData.password) {
                 return;
             }
-
+                setAuth(result);
                 localStorage.setItem('authToken', result.accessToken);
                 localStorage.setItem('userId', result._id);
+                localStorage.setItem('userData', [ result.username, result.email ])
 
             } catch (err) {
                 throw new Error(err);
@@ -113,9 +115,10 @@ function App() {
             setError(error) || setError(responseErr);
         } else {
             try {
-
+                setAuth(result);
                 localStorage.setItem('authToken', result.accessToken);
                 localStorage.setItem('userId', result._id);
+                localStorage.setItem('userData', [ result.username, result.email ])
 
 
                 navigate('/collection');
@@ -134,6 +137,7 @@ function App() {
         onLogout,
         onEditSubmit,
         cars: cars,
+        auth: auth,
         isAuthenticated: !!localStorage.getItem('authToken'),
         userId: localStorage.getItem('userId'),
         token: localStorage.getItem('authToken'),
@@ -150,7 +154,8 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/collection' element={<Collection />} />
+                    <Route path='/collection' element={<Collection trigger={false} />} />
+                    <Route path='/customCollection' element={<Collection trigger={true} />} />
                     <Route path='/addItem' element={<AddItem /> }/>
                     <Route path='/details/:id' element={<Details /> } />
                     <Route path='details/:id/edit' element={<Edit />} />

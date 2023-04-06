@@ -6,4 +6,4 @@ export const register = async (data) => request.post(`${baseUrl}/register`, data
 
 export const login = async (data) => request.post(`${baseUrl}/login`, data);
 
-export const getUser = async (token) => request.get(`${baseUrl}/`, "", token)
+export const getUser = async () => request.get(`${baseUrl}/`) ;

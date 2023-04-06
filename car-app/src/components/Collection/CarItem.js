@@ -9,6 +9,7 @@ export const CarItem = ( {
     year,
     imageUrl,
     description,
+    creater,
 
 }) => {
     const { isAuthenticated } = useContext(AuthContext);
@@ -19,7 +20,7 @@ export const CarItem = ( {
         <div className="create-year">{year}</div>
         <div className="car-description">{description}</div>
         {isAuthenticated && (<Link to={`/details/${_id}`} className="details-btn"> Details </Link>)}
-        {/* <div className="creater">{creater}</div> */}
+         <div className="creater">Added by: {creater}</div> 
       </div>
     );
 }

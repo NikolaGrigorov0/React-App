@@ -8,12 +8,14 @@ import { useNavigate } from 'react-router-dom';
 export const AddItem = () => {
     const { onCreateSubmit } = useContext(AuthContext);
     const navigate = useNavigate();
+    const creater = localStorage.getItem('userData').split(',')[0];
 
     const { values, changeHandler, onSubmit } = useForm({
         carModel: '',
         year: '',
         imageUrl: '',
         description : '',
+        creater: creater,
     }, onCreateSubmit); 
 
     useEffect(() => {
