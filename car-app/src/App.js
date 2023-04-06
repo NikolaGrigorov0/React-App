@@ -17,6 +17,7 @@ import { registerValidation } from "./validation/registerValitation";
 import { loginValidation } from "./validation/loginValidation";
 import { addItemValidation } from "./validation/addItemValidation";
 import { NotFoundPage } from "./components/NotFoundPage/NotFoundPage";
+import { Profile } from "./components/Profile/Profile";
 
 
 
@@ -153,6 +154,7 @@ function App() {
                     <Route path='/addItem' element={<AddItem /> }/>
                     <Route path='/details/:id' element={<Details /> } />
                     <Route path='details/:id/edit' element={<Edit />} />
+                    <Route path='/profile' element={<Profile />} />
                     <Route path='/*' element={<NotFoundPage />} />
                 </Routes>
             </main>

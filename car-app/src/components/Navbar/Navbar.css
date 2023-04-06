@@ -1,8 +1,30 @@
-.me-auto {
+.all-users{
     font-size: large;
     text-align: center;
     display: flex;
     align-items: center;
+}
+
+.users {
+    font-size: large;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.others {
+    display: flex;
+    margin-left: 270%;
+    align-items: center;
+    
 
 }
+.guests {
+    font-size: large;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
 
