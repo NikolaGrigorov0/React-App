@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import './Profile.css';
 import { AuthContext } from '../../contexts/authContext';
+
+import './Profile.css';
 
 export const Profile = () => {
     let userData = localStorage.getItem("userData").split(',');

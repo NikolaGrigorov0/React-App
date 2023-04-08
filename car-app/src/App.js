@@ -35,10 +35,6 @@ function App() {
             });
     }, []);
 
-    useEffect(() => {
-        console.log(auth);
-    }, [auth])
-
 
     const onEditSubmit = async (data) => {
         const error = addItemValidation(data.carModel, data.year, data.imageUrl, data.description);
